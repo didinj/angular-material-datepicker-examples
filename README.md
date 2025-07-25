@@ -1,6 +1,6 @@
 # Mastering Angular Material Datepicker with Standalone Components
 
-Read the full tutorial [here]().
+Read the full tutorial [here](https://www.djamware.com/post/6882ec94a9435c723781d1cb/mastering-angular-material-datepicker-with-standalone-components).
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
 
