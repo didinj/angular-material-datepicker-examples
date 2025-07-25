@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select a date (Moment)</mat-label>
+  <input matInput [matDatepicker]="picker" [formControl]="dateControl" />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<p>Selected (raw): {{ dateControl.value }}</p>
+<p>Formatted: {{ dateControl.value?.format("LL") }}</p>

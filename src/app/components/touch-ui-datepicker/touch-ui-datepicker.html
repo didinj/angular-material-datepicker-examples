@@ -1,0 +1,16 @@
+<h2>Mobile-Friendly Datepicker</h2>
+<mat-form-field appearance="fill">
+  <mat-label>Pick a date</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [formControl]="mobileDateControl"
+    placeholder="Select date"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker touchUi="true"></mat-datepicker>
+</mat-form-field>
+
+<p *ngIf="mobileDateControl.value">
+  Selected: {{ mobileDateControl.value | date }}
+</p>

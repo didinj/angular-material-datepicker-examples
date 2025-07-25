@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Date Range Picker</h2>
+  <form [formGroup]="rangeForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose date range</mat-label>
+      <mat-date-range-input [rangePicker]="rangePicker" formGroupName="range">
+        <input matStartDate formControlName="start" placeholder="Start date" />
+        <input matEndDate formControlName="end" placeholder="End date" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="rangePicker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #rangePicker></mat-date-range-picker>
+    </mat-form-field>
+  </form>
+
+  <div *ngIf="rangeForm.valid">
+    <p>Start: {{ rangeForm.value.range!.start | date }}</p>
+    <p>End: {{ rangeForm.value.range!.end | date }}</p>
+  </div>
+</div>

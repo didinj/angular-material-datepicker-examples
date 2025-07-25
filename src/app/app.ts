@@ -1,12 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DateRangePicker } from "./components/date-range-picker/date-range-picker";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [DateRangePicker],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('angular-material-datepicker');
-}
+export class App { }

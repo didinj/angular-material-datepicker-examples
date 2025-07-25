@@ -1,0 +1,61 @@
+<h2>Hotel Booking Form</h2>
+<form
+  [formGroup]="bookingForm"
+  (ngSubmit)="submitBooking()"
+  class="booking-form"
+>
+  <!-- Date Range -->
+  <mat-form-field appearance="fill">
+    <mat-label>Check-in & Check-out</mat-label>
+    <mat-date-range-input
+      [rangePicker]="rangePicker"
+      formGroupName="stayPeriod"
+    >
+      <input matStartDate formControlName="checkin" placeholder="Check-in" />
+      <input matEndDate formControlName="checkout" placeholder="Check-out" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="rangePicker"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker #rangePicker touchUi="true"></mat-date-range-picker>
+    <mat-error *ngIf="bookingForm.get('stayPeriod')?.invalid">
+      Both dates are required.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Flexible Alternative Date -->
+  <mat-form-field appearance="fill">
+    <mat-label>Flexible alternative date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="altPicker"
+      placeholder="Optional"
+      formControlName="alternativeDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="altPicker"></mat-datepicker-toggle>
+    <mat-datepicker #altPicker touchUi="true"></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Submit Button -->
+  <button mat-raised-button color="primary" [disabled]="bookingForm.invalid">
+    Submit Booking
+  </button>
+</form>
+
+<!-- Display Output -->
+<div *ngIf="submitted">
+  <h3>Booking Summary</h3>
+  <p>
+    <strong>Check-in:</strong>
+    {{ bookingForm.value.stayPeriod!.checkin | date : "fullDate" }}
+  </p>
+  <p>
+    <strong>Check-out:</strong>
+    {{ bookingForm.value.stayPeriod!.checkout | date : "fullDate" }}
+  </p>
+  <p *ngIf="bookingForm.value.alternativeDate">
+    <strong>Alternative Date:</strong>
+    {{ bookingForm.value.alternativeDate | date : "fullDate" }}
+  </p>
+</div>

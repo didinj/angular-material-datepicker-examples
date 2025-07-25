@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Reactive Form Datepicker</h2>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Pick a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.controls['date'].invalid">
+        Date is required
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <p *ngIf="form.valid">You selected: {{ form.value.date | date }}</p>
+</div>
